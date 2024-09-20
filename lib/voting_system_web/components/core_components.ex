@@ -17,7 +17,7 @@ defmodule VotingSystemWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import VotingSystemWeb.Gettext
+  use Gettext, backend: VotingSystemWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -305,6 +305,7 @@ defmodule VotingSystemWeb.CoreComponents do
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
+        # credo:disable-for-next-line
         Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
       end)
 

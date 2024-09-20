@@ -17,7 +17,7 @@ defmodule VotingSystemWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import VotingSystemWeb.Gettext
+  use Gettext, backend: VotingSystemWeb.Gettext
 
   @doc """
   Renders a modal.

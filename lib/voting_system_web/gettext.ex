@@ -20,5 +20,5 @@ defmodule VotingSystemWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :voting_system
+  use Gettext.Backend, otp_app: :voting_system
 end

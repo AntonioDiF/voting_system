@@ -1,4 +1,7 @@
 defmodule VotingSystem.Accounts.UserToken do
+  @moduledoc """
+  Token handling for User context
+  """
   use Ecto.Schema
   import Ecto.Query
   alias VotingSystem.Accounts.UserToken

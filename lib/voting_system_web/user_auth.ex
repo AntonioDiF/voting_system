@@ -1,4 +1,7 @@
 defmodule VotingSystemWeb.UserAuth do
+  @moduledoc """
+  Auth tools for a basic User
+  """
   use VotingSystemWeb, :verified_routes
 
   import Plug.Conn

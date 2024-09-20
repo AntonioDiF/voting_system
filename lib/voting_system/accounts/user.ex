@@ -1,4 +1,7 @@
 defmodule VotingSystem.Accounts.User do
+  @moduledoc """
+  Changesets for User
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

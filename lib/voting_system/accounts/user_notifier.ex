@@ -1,4 +1,7 @@
 defmodule VotingSystem.Accounts.UserNotifier do
+  @moduledoc """
+  Mail notifier implementation for Accounts handling
+  """
   import Swoosh.Email
 
   alias VotingSystem.Mailer

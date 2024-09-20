@@ -6,7 +6,7 @@ defmodule VotingSystem.Accounts do
   import Ecto.Query, warn: false
   alias VotingSystem.Repo
 
-  alias VotingSystem.Accounts.{User, UserToken, UserNotifier}
+  alias VotingSystem.Accounts.{User, UserNotifier, UserToken}
 
   ## Database getters
 

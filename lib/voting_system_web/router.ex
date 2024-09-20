@@ -68,6 +68,13 @@ defmodule VotingSystemWeb.Router do
       on_mount: [{VotingSystemWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+
+      live "/poll_templates", PollTemplateLive.Index, :index
+      live "/poll_templates/new", PollTemplateLive.Index, :new
+      live "/poll_templates/:id/edit", PollTemplateLive.Index, :edit
+
+      live "/poll_templates/:id", PollTemplateLive.Show, :show
+      live "/poll_templates/:id/show/edit", PollTemplateLive.Show, :edit
     end
   end
 

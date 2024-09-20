@@ -1,0 +1,27 @@
+<.header>
+  Poll template <%= @poll_template.id %>
+  <:subtitle>This is a poll_template record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/poll_templates/#{@poll_template}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit poll_template</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Question"><%= @poll_template.question %></:item>
+  <:item title="Options"><%= @poll_template.options %></:item>
+</.list>
+
+<.back navigate={~p"/poll_templates"}>Back to poll_templates</.back>
+
+<.modal :if={@live_action == :edit} id="poll_template-modal" show on_cancel={JS.patch(~p"/poll_templates/#{@poll_template}")}>
+  <.live_component
+    module={VotingSystemWeb.PollTemplateLive.FormComponent}
+    id={@poll_template.id}
+    title={@page_title}
+    action={@live_action}
+    poll_template={@poll_template}
+    patch={~p"/poll_templates/#{@poll_template}"}
+  />
+</.modal>

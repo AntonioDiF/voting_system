@@ -1,0 +1,42 @@
+<.header>
+  Listing Poll templates
+  <:actions>
+    <.link patch={~p"/poll_templates/new"}>
+      <.button>New Poll template</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="poll_templates"
+  rows={@streams.poll_templates}
+  row_click={fn {_id, poll_template} -> JS.navigate(~p"/poll_templates/#{poll_template}") end}
+>
+  <:col :let={{_id, poll_template}} label="Question"><%= poll_template.question %></:col>
+  <:col :let={{_id, poll_template}} label="Options"><%= poll_template.options %></:col>
+  <:action :let={{_id, poll_template}}>
+    <div class="sr-only">
+      <.link navigate={~p"/poll_templates/#{poll_template}"}>Show</.link>
+    </div>
+    <.link patch={~p"/poll_templates/#{poll_template}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, poll_template}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: poll_template.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="poll_template-modal" show on_cancel={JS.patch(~p"/poll_templates")}>
+  <.live_component
+    module={VotingSystemWeb.PollTemplateLive.FormComponent}
+    id={@poll_template.id || :new}
+    title={@page_title}
+    action={@live_action}
+    poll_template={@poll_template}
+    patch={~p"/poll_templates"}
+  />
+</.modal>
